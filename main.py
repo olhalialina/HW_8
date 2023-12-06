@@ -1,8 +1,7 @@
-from datetime import date, datetime,timedelta
+from datetime import date, datetime, timedelta
 
 
 def get_birthdays_per_week(users):
-    
     if not users:
         return {}
 
@@ -20,7 +19,8 @@ def get_birthdays_per_week(users):
         for weekday in dict_date:
             dt_today = dict_date[weekday]
 
-            if  not (dt_today.month == dt_users.month and dt_today.day == dt_users.day):
+            if not (dt_today.month == dt_users.month
+                    and dt_today.day == dt_users.day):
                 continue
 
             if weekday in ('Sunday', 'Saturday'):
@@ -35,8 +35,6 @@ def get_birthdays_per_week(users):
                 else:
                     result[weekday] = [el_users["name"]]
 
-
-
     return result
 
 
@@ -50,6 +48,6 @@ if __name__ == "__main__":
 
     result = get_birthdays_per_week(users)
     print(result)
-    
+
     for day_name, names in result.items():
         print(f"{day_name}: {', '.join(names)}")
